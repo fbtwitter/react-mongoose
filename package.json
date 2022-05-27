@@ -1,55 +1,24 @@
 {
-  "name": "react",
-  "private": true,
-  "version": "0.1.0",
+  "name": "react-fullstack",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "stylelint": "stylelint \"**/*.scss\" --fix",
-    "eslint": "eslint --cache --fix"
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
+  "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
+    "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.4",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "redux": "^4.2.0",
-    "sass": "^1.51.0"
+    "mongoose": "^6.3.4"
   },
   "devDependencies": {
-    "@redux-devtools/core": "^3.12.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@vitejs/plugin-react": "^1.3.0",
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "nodemon": "^2.0.16",
-    "prettier": "^2.6.2",
-    "stylelint": "^14.8.2",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-prettier": "^2.0.0",
-    "vite": "^2.9.7",
-    "vite-plugin-svgr": "^2.1.0"
-  },
-  "browsersList": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ]
+    "nodemon": "^2.0.16"
+  }
 }
